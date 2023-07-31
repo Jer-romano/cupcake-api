@@ -1,10 +1,13 @@
 """Flask app for Cupcakes"""
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
 from models import Cupcake, connect_db, db
 from flask_debugtoolbar import DebugToolbarExtension
+from forms import CupcakeForm
 
 
 app = Flask(__name__)
+CORS(app)
 app.app_context().push()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cupcakes'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -47,11 +50,11 @@ def update_cupcake(id):
 def create_cupcake():
     '''Adds a new cupcake to the database, and upon successful 
     creation, returns the JSON for that cupcake'''
-    #print(request.json["json"])
     new_cupcake = Cupcake(**request.json)
     db.session.add(new_cupcake)
     db.session.commit()
     serialized = new_cupcake.serialize()
+    print(serialized)
     return (jsonify(cupcake=serialized), 201)
 
 @app.route("/api/cupcakes/<int:id>", methods=["DELETE"])
@@ -61,6 +64,9 @@ def delete_cupcake(id):
     db.session.commit()
     return jsonify({"deleted": id})
 
+@app.route("/", methods=["GET", "POST"])
+def show_homepage():
+    return render_template("base.html")
 
 
 

@@ -1,0 +1,34 @@
+<!-- <form id="add-form" action="/api/cupcakes" method="POST">
+    {{ form.hidden_tag() }}
+    {%for field in form  
+        if field.widget.input_type != 'hidden' %}
+        <div class="form-group">
+            {{field.label(class_="form-label")}}
+            {{ field }}
+
+        {% for error in field.errors %}
+            {{ error }}
+        {%endfor%}
+        </div>
+    {%endfor%}
+    <button type="submit" class="btn btn-success">Add</button>
+</form> -->
+<!-- 
+{%for cupcake in cupcakes%}
+<li class="cupcake-entry">
+    <img src="{{cupcake.image}}" alt="A picture of a {{cupcake.flavor}} cupcake">
+    <div class="c-info"> 
+        <h3>Flavor: {{cupcake.flavor}}</h3>
+        <h4>Size: {{cupcake.size}}</h4>
+        <h4>Rating: {{cupcake.rating}}</h4>
+    </div>
+    <div class="c-info">
+        <button class="btn btn-primary update-btn"
+         data-id="{{cupcake.id}}">Update</button>
+        <button class="btn btn-danger delete-btn"
+         data-id="{{cupcake.id}}">Delete</button>
+    </div>
+    <hr>
+</li>
+
+{%endfor%} -->

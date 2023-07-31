@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+img {
+    max-height: 200px;
+    max-width: 200px;
+    margin: 5px;
+}
+.c-info {
+    display: inline-block;
+}
+
+form, h2 {
+    margin-left: 150px;
+   
+}
